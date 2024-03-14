@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.dock {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    /* 将 Dock 栏宽度设置为屏幕宽度的 90% */
+    display: flex;
+    background: #333;
+    padding: 10px 0;
+    border-radius: 20px;
+    justify-content: center;
+    z-index: 999;
+}
+
+.desktop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 800px;
+    margin-left: 5%;
+    /* 设置左侧边距为屏幕宽度的 10% */
+    /* 水平居中 */
+}
+
+.column {
+    flex-basis: calc(100% / 8);
+    /* 每列固定显示 8 个图标 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon {
+    /* 其他样式 */
+    width: 64px;
+    /* 图标大小调整 */
+    height: 64px;
+    /* 图标大小调整 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 10px 15px;
+    /* 上下间距为 10px，左右间距为 15px */
+    cursor: pointer;
+    transition: transform 0.3s;
+    /* 其他样式 */
+    /* 其他样式 */
+    position: relative;
+    /* 使文字标识相对于图标定位 */
+}
+
+.icon::after {
+    content: attr(alt);
+    /* 使用图标的 alt 属性作为文字内容 */
+    position: absolute;
+    bottom: -20px;
+    /* 根据需要调整文字距离图标底部的距离 */
+    left: 50%;
+    /* 居中文字 */
+    transform: translateX(-50%);
+    /* 水平居中 */
+    white-space: nowrap;
+    /* 防止文字换行 */
+    font-size: 12px;
+    /* 根据需要调整文字大小 */
+    color: #333;
+    /* 根据需要调整文字颜色 */
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+
+/* 媒体查询 */
+
+@media screen and (max-width: 768px) {
+    .dock {
+        width: 100%;
+        /* 小屏幕下将 Dock 栏宽度设置为 100% */
+        padding: 5px 0;
+    }
+    .icon {
+        width: 60px;
+        /* 小屏幕下图标大小调整 */
+        height: 60px;
+        /* 小屏幕下图标大小调整 */
+        margin: 0 5px;
+        /* 小屏幕下图标间距调整 */
+    }
+}

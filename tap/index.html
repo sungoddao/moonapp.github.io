@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mac Desktop</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .slideshow-container {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            /* 调整幻灯片容器与右侧的距离 */
+            transform: translateY(-50%);
+            max-width: 300px;
+            /* 根据需要设置容器的宽度 */
+            overflow: hidden;
+        }
+        
+        .slideshow-content {
+            display: flex;
+            flex-direction: column;
+            animation: scrollUp 10s linear infinite;
+        }
+        
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(0%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+        
+        .mySlides {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .text {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="desktop">
+        <!-- 插入图标 -->
+        <a href="https://unisat.io/" title="unisat">
+            <div class="icon" style="background-image: url('../img/unisat.png');" alt="unisat"></div>
+        </a>
+        <a href="https://satsx.io/?time=24h/" title="satsx">
+            <div class="icon" style="background-image: url('../img/satsx.png');" alt="satsx"></div>
+        </a>
+        <a href="https://ordinalswallet.com/" title="ordinalswallet">
+            <div class="icon" style="background-image: url('../img/ordinals.png');" alt="ordiswallet"></div>
+        </a>
+        <a href="https://ordinalsbot.com/" title="ipfs">
+            <div class="icon" style="background-image: url('../img/ordibot.png');" alt="ordinalsbot"></div>
+        </a>
+        <a href="https://runex.tech/" title="runex">
+            <div class="icon" style="background-image: url('../img/runex.png');" alt="RuneX"></div>
+        </a>
+    </div>
+    <!-- 导入 Swiper JS -->
+    </div>
+    <div class="dock">
+        <!-- 插入图标 -->
+        <a href="../index.html" title="Home">
+            <div class="icon" style="background-image: url('../img/home.png');"></div>
+        </a>
+        <a href="../rune/index.html" title="rune">
+            <div class="icon" style="background-image: url('../img/runes.png');"></div>
+        </a>
+        <a href="../pipe/index.html" title="pipe">
+            <div class="icon" style="background-image: url('../img/pipe.png');"></div>
+        </a>
+        <a href="../tap/index.html" title="tap">
+            <div class="icon" style="background-image: url('../img/tap.png');"></div>
+        </a>
+        <a href="../ordi/index.html" title="ordi">
+            <div class="icon" style="background-image: url('../img/ordi.png');"></div>
+        </a>
+        <a href="../eth/index.html" title="eth">
+            <div class="icon" style="background-image: url('../img/eth.png');"></div>
+        </a>
+        <a href="../icp/index.html" title="icp">
+            <div class="icon" style="background-image: url('../img/icp.png');"></div>
+        </a>
+        <a href="../ipfs/index.html" title="ipfs">
+            <div class="icon" style="background-image: url('../img/ipfs.png');"></div>
+        </a>
+        <!-- 添加更多图标 -->
+    </div>
+    <!-- 幻灯片容器 -->
+    <div class="slideshow-container">
+        <!-- 幻灯片内容将动态插入到这里 -->
+        <div class="slideshow-content">
+            <div class="mySlides fade">
+                <a href="https://inspip.com/open-art/pipeblock">
+                    <img src="../guang/pipeblock.png" style="width:100%">
+                    <div class="text">pipeblock</div>
+                </a>
+            </div>
+
+            <div class="mySlides fade">
+                <a href="https://inspip.com/open-art/nodeblock">
+                    <img src="../guang/nodeblock.png" style="width:100%">
+                    <div class="text">nodeblock</div>
+                </a>
+            </div>
+
+            <div class="mySlides fade">
+                <a href="https://inspip.com/open-art/runerocks">
+                    <img src="../guang/runerocks.png" style="width:100%">
+                    <div class="text">runerocks</div>
+                </a>
+            </div>
+        </div>
+        <div class="slideshow-content">
+            <div class="mySlides fade">
+                <a href="https://inspip.com/open-art/pipemask">
+                    <img src="../guang/pipemask.png" style="width:100%">
+                    <div class="text">pipemask</div>
+                </a>
+            </div>
+
+            <div class="mySlides fade">
+                <a href="https://inspip.com/open-art/pipecasters">
+                    <img src="../guang/pipecasters.png" style="width:100%">
+                    <div class="text">pipecasters</div>
+                </a>
+            </div>
+
+            <div class="mySlides fade">
+                <a href="https://inspip.com/open-art/pipex">
+                    <img src="../guang/pipex.png" style="width:100%">
+                    <div class="text">pipex</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 功能 -->
+    <script>
+        // 获取幻灯片容器
+        var slideshowContents = document.querySelectorAll('.slideshow-content');
+
+        // 自动播放幻灯片
+        function showSlides(slideshowContent) {
+            var slides = slideshowContent.children;
+            var firstSlide = slides[0].cloneNode(true); // 克隆第一张幻灯片
+            slideshowContent.appendChild(firstSlide); // 将克隆的幻灯片添加到容器末尾
+
+            var totalHeight = slideshowContent.clientHeight;
+            var currentOffset = 0;
+
+            function moveUp() {
+                currentOffset += 1;
+                slideshowContent.style.transform = 'translateY(-' + currentOffset + 'px)';
+
+                if (currentOffset >= totalHeight) {
+                    currentOffset = 0;
+                    slideshowContent.style.transition = 'none';
+                    slideshowContent.style.transform = 'translateY(0)';
+                    setTimeout(function() {
+                        slideshowContent.style.transition = 'transform 5s linear';
+                    }, 10);
+                }
+
+                requestAnimationFrame(moveUp);
+            }
+
+            moveUp();
+        }
+
+        // 开始自动播放幻灯片
+        slideshowContents.forEach(function(slideshowContent) {
+            showSlides(slideshowContent);
+        });
+    </script>
+</body>
+
+</html>
